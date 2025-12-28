@@ -1,0 +1,382 @@
+/* src/App.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f4f7f9; /* Màu nền xám nhạt */
+}
+
+.App {
+  max-width: 1200px;
+  margin: 20px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+  padding: 30px;
+  background-color: #ffffff; /* Nền trắng cho nội dung chính */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Đổ bóng nhẹ */
+}
+
+h1, h2 {
+  color: #a91d2d; /* Màu đỏ tiêu đề (gần giống màu mẫu) */
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
+}
+
+/* Nút chính (Kết nối ví, Tải chứng chỉ) */
+.btn-primary {
+  background-color: #007bff; /* Màu xanh dương */
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Nút cấp chứng chỉ */
+.btn-issue {
+  background-color: #a91d2d; /* Màu đỏ */
+  color: white;
+  margin-top: 15px; /* Thêm khoảng cách trên */
+}
+.btn-issue:hover {
+  background-color: #8c1724; /* Màu đỏ đậm hơn */
+}
+
+/* Nút tải ảnh */
+.btn-download {
+   background-color: #28a745; /* Màu xanh lá */
+   color: white;
+}
+.btn-download:hover {
+   background-color: #1e7e34;
+}
+
+input[type="text"],
+textarea {
+  width: calc(100% - 24px); /* Chiếm hết chiều rộng trừ padding */
+  padding: 12px;
+  border: 1px solid #ced4da; /* Viền xám nhạt */
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 10px; /* Khoảng cách giữa các input */
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical; /* Cho phép thay đổi chiều cao */
+}
+
+input[type="file"] {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #495057; /* Màu chữ đậm hơn */
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e9ecef; /* Đường kẻ mờ hơn */
+  margin: 40px 0;
+}
+
+/* Phần hiển thị danh sách chứng chỉ */
+.certificate-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Căn các thẻ ra giữa nếu không đủ hàng */
+  margin-top: 20px;
+}
+
+/* Thẻ chứng chỉ */
+.certificate-card {
+  border: 1px solid #e9ecef; /* Viền thẻ nhạt hơn */
+  border-radius: 8px;
+  padding: 16px;
+  margin: 10px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.2s ease;
+}
+.certificate-card:hover {
+    transform: translateY(-3px); /* Hiệu ứng nhấc lên khi hover */
+}
+
+.certificate-card img {
+  width: 100%;
+  height: 150px; /* Điều chỉnh lại chiều cao ảnh */
+  object-fit: contain; /* Hiển thị toàn bộ ảnh, có thể để lại khoảng trắng */
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.certificate-card h4 {
+  margin-top: 10px;
+  min-height: 40px;
+  font-size: 1.1em;
+  color: #343a40;
+}
+
+.certificate-card p {
+  font-size: 0.9em;
+  color: #6c757d;
+  min-height: 30px; /* Đảm bảo chiều cao tối thiểu cho mô tả */
+}
+
+.certificate-card a {
+   font-size: 0.8em;
+   color: #007bff;
+   text-decoration: none;
+}
+.certificate-card a:hover {
+   text-decoration: underline;
+}
+
+/* Thông báo trạng thái */
+.status-message {
+  margin-top: 25px;
+  color: #155724; /* Màu xanh lá đậm */
+  background-color: #d4edda; /* Nền xanh lá nhạt */
+  border: 1px solid #c3e6cb;
+  padding: 10px 15px;
+  border-radius: 6px;
+  word-break: break-all;
+  text-align: center;
+}
+
+
+/* --- CSS CHO TRANG XÁC THỰC (VIEWER) --- */
+
+.viewer-page-container {
+  display: flex;
+  flex-wrap: wrap; /* Cho phép xuống hàng trên di động */
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+.viewer-cert-column {
+  flex: 2; /* Chiếm 2/3 không gian */
+  padding: 20px;
+  min-width: 300px;
+}
+
+.viewer-cert-column img {
+  width: 100%;
+  border: 1px solid #eee;
+}
+
+.viewer-panel-column {
+  flex: 1; /* Chiếm 1/3 không gian */
+  padding: 20px;
+  background-color: #f9f9f9; /* Màu nền cho bảng thông tin */
+  border-left: 1px solid #eee;
+  min-width: 280px;
+}
+
+.viewer-panel .panel-section {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.viewer-panel .panel-section.valid {
+  background-color: #d4edda;
+  color: #155724;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.viewer-panel .panel-section .label {
+  display: block;
+  font-size: 1em;
+  color: #000000;
+  margin-bottom: 3px;
+}
+
+.viewer-panel .panel-section strong {
+  display: block;
+  font-size: 1em;
+  color: #000;
+}
+
+.viewer-panel .panel-section a {
+  display: block;
+  color: #007bff;
+  word-wrap: break-word;
+}
+
+
+/* Ẩn input file mặc định */
+input[type="file"] {
+  display: none;
+}
+
+/* Tạo kiểu cho nút Upload tùy chỉnh (Label) */
+.custom-file-upload {
+  border: 1px solid #a91d2d;
+  background-color: #a91d2d; /* Màu đỏ */
+  color: white;
+  display: inline-block; /* Quan trọng: Để nút không chiếm hết dòng */
+  width: auto; /* Quan trọng: Độ rộng tự động theo nội dung */
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.custom-file-upload:hover {
+  background-color: #8c1724;
+}
+
+/* Style cho dòng chữ tên file */
+.file-name-display {
+  display: inline-block;
+  margin-left: 15px; /* Khoảng cách với nút */
+  color: #28a745; /* Màu xanh lá cây theo yêu cầu */
+  font-weight: 500;
+}
+
+
+/* Style for dashboard */
+
+.stats-container {
+  display: grid;
+  /* Chia cột tự động: Nếu màn hình rộng thì 3 cột, hẹp thì tự xuống dòng */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; /* Khoảng cách giữa các thẻ */
+  margin-bottom: 40px;
+}
+
+/* Style chung cho các thẻ (Card) */
+.stat-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px; /* Chiều cao tối thiểu đồng bộ */
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px); /* Hiệu ứng nổi lên khi di chuột */
+}
+
+.stat-card h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Riêng cho thẻ Tổng số */
+.total-number {
+  font-size: 5em;
+  font-weight: 800;
+  color: #a91d2d; /* Màu đỏ thương hiệu */
+  margin: 0;
+  line-height: 1;
+}
+
+.total-label {
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Container cho biểu đồ để nó không bị méo */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Cố định chiều cao vùng vẽ */
+  display: flex;
+  justify-content: center;
+}
+
+
+/* --- CSS CHO PHẦN TIÊU ĐỀ (HEADER) --- */
+.project-header {
+  text-align: center;
+  margin: 30px 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Dòng 1: Trường Đại học... */
+.line-one {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #000;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.line-one span {
+  color: #FF4500; /* Màu cam đỏ cho tên Khoa */
+  font-size: 20px;
+}
+
+/* Dòng 2: Đồ án & Tên đề tài */
+.line-two {
+  font-size: 20px; /* Chỉnh nhỏ lại một chút cho cân đối */
+  font-weight: bold;
+  color: #003366; /* Màu xanh đậm cho chữ ĐỒ ÁN */
+  margin: 15px 0;
+  text-transform: uppercase;
+}
+
+.line-two span {
+  display: block;
+  font-size: 18px;
+  color: #000; /* Màu đen cho tên đề tài */
+  margin-top: 5px;
+  text-transform: none; /* Giữ nguyên chữ thường/hoa của tên đề tài */
+}
+
+/* Khu vực Tên GVHD & SVTH */
+.name-section {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.name-section p {
+  margin: 5px 0;
+}
+
+.name-section strong {
+  color: #003366; /* Màu xanh đậm cho tên người */
+}
